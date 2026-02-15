@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "hbs": "^4.2.0",
+    "init": "^0.1.2",
+    "mysql2": "^3.16.0",
+    "nodemon": "^3.1.11",
+    "npm": "^11.7.0"
+  },
+  "name": "project-swiggy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
