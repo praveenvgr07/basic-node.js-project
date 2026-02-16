@@ -22,10 +22,7 @@ a.set("view engine","hbs");
 a.use(r.static(location));
 a.set("views",Path.join(__dirname,"./public/views"));
 
-a.get("/",(req,res)=>{
-    res.render("home" ,{msg:process.env.goldrate});
 
-});
 
 a.get("/login",(req,res)=>{
     res.render("login");
@@ -72,9 +69,27 @@ a.use(r.urlencoded({extended:false}));
  a.post("/register",(req,res)=>{    
     console.log(req.body);
             db.query("insert into node_js values(?,?,?,?)",[req.body.username,req.body.phone_number,req.body.email,req.body.password],(err,res)=>{
-            if(err) throw err;
-            console.log("data inserted");
+           if (err) {
+        console.log(err); // print error in console
+
+        if (err.code === 'ER_DUP_ENTRY') {
+            return res.status(400).json({
+                message: "User already exists"
+            });
+        }
+
+        return res.status(500).json({
+            message: "Database error"
+        });
+    }
+
+    res.json({
+        message: "Data inserted successfully"
+    });
             });
 
             });
-       
+app.get("/", (req, res) => {
+    res.send("Server is running 🚀");
+});
+
