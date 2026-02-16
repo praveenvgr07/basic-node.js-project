@@ -22,6 +22,9 @@ a.set("view engine","hbs");
 a.use(r.static(location));
 a.set("views",Path.join(__dirname,"./public/views"));
 
+a.get("/",(req,res)=>{
+    res.render("home");
+});
 
 
 a.get("/login",(req,res)=>{
