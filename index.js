@@ -59,7 +59,26 @@ a.use(r.urlencoded({extended:false}));
         db.query("select *from node_js where username=? and password=?",[req.body.username,req.body.password],(err,res)=>{
             if(res.length==0){console.log("data not found")};
           console.log(res);
-          res.forEach(e => {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({ message: "Database error" });
+        }
+
+        if (result.length > 0) {
+            // Login success
+            return res.json({
+                success: true,
+                message: "Login successful"
+            });
+        } else {
+            // Login failed
+            return res.status(401).json({
+                success: false,
+                message: "Invalid username or password"
+            });
+        }
+
+        res.forEach(e => {
                 console.log(e.username,"\t",e.password)
           });
         })
