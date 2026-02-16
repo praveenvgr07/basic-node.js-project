@@ -1,0 +1,24 @@
+<nav class="navbar">
+    <div class="logo">
+        <a href="/home?user={{user}}">
+            <img src="/image/logo.png" alt="Swiggy Logo">
+            <h1>Swiggy</h1>
+        </a>
+    </div>
+    <div class="nav-links">
+        <a href="#" class="nav-item">Swiggy Corporate</a>
+        <a href="#" class="nav-item">Partner with us</a>
+        <a href="#" class="nav-btn-light">Get the App</a>
+
+        {{#if user}}
+        <div class="user-menu">
+            <span class="user-welcome">Hello, {{user}}</span>
+            <a href="/cart" class="nav-item"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <a href="/orders?user={{user}}" class="nav-item">Orders</a>
+            <a href="/logout" class="nav-btn-dark">Logout</a>
+        </div>
+        {{else}}
+        <a href="/login" class="nav-btn-dark">Sign In</a>
+        {{/if}}
+    </div>
+</nav>

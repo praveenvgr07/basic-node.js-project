@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+section{
+    margin: 40px;
+    margin-top: 60px;
+}
+h1{
+    margin: 10px;
+}
+p{
+    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+p span a{
+    text-decoration: none;
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+}
+input{
+    margin: 20px;
+    padding: 20px;
+    margin-left: 10px;
+    border: 1px solid darkgray;
+   
+}
+.submit{
+    margin: 10px;
+    padding: 10px 50px;
+    background-color: #ff5200;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.home{
+    margin-top: 20px;
+    margin-left: 40px;
+    padding: 10px 50px;
+    background-color: #ff5200;
+    border: none;
+    border-radius: 5px;
+}
+.home a{
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+
+}

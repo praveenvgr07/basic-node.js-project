@@ -4,13 +4,14 @@ const hbs=require("hbs");
 const mysql=require("mysql2");
 const Path=require("path");
 const env = require("dotenv");
+const port=process.env.port||3306
  env.config({
     path: Path.join(__dirname,".env")
   });    
 
 const location=Path.join(__dirname,"./public");
 
-a.listen(1234,(req,res)=>{
+a.listen(port,(req,res)=>{
     console.log("port connected");
 });
 
