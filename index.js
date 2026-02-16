@@ -64,20 +64,7 @@ a.use(r.urlencoded({extended:false}));
             return res.status(500).json({ message: "Database error" });
         }
 
-        if (result.length > 0) {
-            // Login success
-            return res.json({
-                success: true,
-                message: "Login successful"
-            });
-        } else {
-            // Login failed
-            return res.status(401).json({
-                success: false,
-                message: "Invalid username or password"
-            });
-        }
-
+       
         res.forEach(e => {
                 console.log(e.username,"\t",e.password)
           });

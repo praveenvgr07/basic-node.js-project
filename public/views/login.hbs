@@ -18,30 +18,7 @@
         <input type="password" name="password" placeholder="Password" required><br>
         <button type="submit" class="submit">Login</button>
     </form>
-    <script>
-document.getElementById("loginForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    const response = await fetch("/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ username, password })
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-        window.location.href = "/";
-    } else {
-        alert(data.message);
-    }
-});
-</script>
+    
     <P>By clicking on Login, I accept the <B> Terms & Conditions & Privacy Policy</B></P>
    </section> 
   
