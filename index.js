@@ -95,7 +95,5 @@ a.use(r.urlencoded({extended:false}));
             });
 
             });
-a.get("/", (req, res) => {
-    res.send("Server is running 🚀");
-});
+
 
