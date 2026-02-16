@@ -89,7 +89,7 @@ a.use(r.urlencoded({extended:false}));
             });
 
             });
-app.get("/", (req, res) => {
+a.get("/", (req, res) => {
     res.send("Server is running 🚀");
 });
 
