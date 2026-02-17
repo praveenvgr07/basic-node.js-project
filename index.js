@@ -80,14 +80,14 @@ a.post("/register", (req, res) => {
     console.log("Register route hit");
     console.log(req.body);
 
-    const { username, phone, email, password } = req.body;
+    const { username, phone_number, email, password } = req.body;
 
     const sql = `
-        INSERT INTO node_js (username, phone, email, password)
+        INSERT INTO node_js (username, phone_number, email, password)
         VALUES (?, ?, ?, ?)
     `;
 
-    db.query(sql, [username, phone, email, password], (err, result) => {
+    db.query(sql, [username, phone_number, email, password], (err, result) => {
 
         if (err) {
             console.log("Database error:", err);
