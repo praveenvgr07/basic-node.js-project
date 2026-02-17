@@ -55,7 +55,8 @@ db.connect((err,res)=>{
 });
 
 
-a.use(r.urlencoded({extended:false}));
+a.use(r.urlencoded({extended:true}));
+a.use(express.json());
 
  a.post("/form",(req,res)=>{
         console.log(req.body); 
@@ -75,28 +76,37 @@ a.use(r.urlencoded({extended:false}));
 
  }) ;
 
- a.post("/register",(req,res)=>{    
+ app.post("/register", (req, res) => {    
+    console.log("Register route hit");
     console.log(req.body);
-            db.query("insert into node_js values(?,?,?,?)",[req.body.username,req.body.phone_number,req.body.email,req.body.password],(err,res)=>{
-           if (err) {
-        console.log(err); // print error in console
 
-        if (err.code === 'ER_DUP_ENTRY') {
-            return res.status(400).json({
-                message: "User already exists"
+    const { username, phone_number, email, password } = req.body;
+
+    const sql = "INSERT INTO node_js (username, phone_number, email, password) VALUES (?, ?, ?, ?)";
+
+    db.query(sql, [username, phone_number, email, password], (err, result) => {  // ✅ use result
+
+        if (err) {
+            console.log("Database error:", err);
+
+            if (err.code === 'ER_DUP_ENTRY') {
+                return res.status(400).json({
+                    message: "User already exists"
+                });
+            }
+
+            return res.status(500).json({
+                message: "Database error"
             });
         }
 
-        return res.status(500).json({
-            message: "Database error"
+        console.log("User inserted successfully");
+
+        return res.json({
+            message: "Data inserted successfully"
         });
-    }
-
-    res.json({
-        message: "Data inserted successfully"
     });
-            });
+});
 
-            });
 
 
