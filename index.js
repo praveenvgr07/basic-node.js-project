@@ -76,22 +76,25 @@ a.use(express.json());
 
  }) ;
 
- app.post("/register", (req, res) => {    
+a.post("/register", (req, res) => {
     console.log("Register route hit");
     console.log(req.body);
 
-    const { username, phone_number, email, password } = req.body;
+    const { username, phone, email, password } = req.body;
 
-    const sql = "INSERT INTO node_js (username, phone_number, email, password) VALUES (?, ?, ?, ?)";
+    const sql = `
+        INSERT INTO node_js (username, phone, email, password)
+        VALUES (?, ?, ?, ?)
+    `;
 
-    db.query(sql, [username, phone_number, email, password], (err, result) => {  // ✅ use result
+    db.query(sql, [username, phone, email, password], (err, result) => {
 
         if (err) {
             console.log("Database error:", err);
 
-            if (err.code === 'ER_DUP_ENTRY') {
+            if (err.code === "ER_DUP_ENTRY") {
                 return res.status(400).json({
-                    message: "User already exists"
+                    message: "Username already exists"
                 });
             }
 
@@ -100,13 +103,12 @@ a.use(express.json());
             });
         }
 
-        console.log("User inserted successfully");
-
         return res.json({
-            message: "Data inserted successfully"
+            message: "Registration successful"
         });
     });
 });
+
 
 
 
