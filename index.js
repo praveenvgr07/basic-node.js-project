@@ -93,21 +93,17 @@ a.post("/register", (req, res) => {
             console.log("Database error:", err);
 
             if (err.code === "ER_DUP_ENTRY") {
-                return res.status(400).json({
-                    message: "Username already exists"
-                });
+                return res.send("Username already exists");
             }
 
-            return res.status(500).json({
-                message: "Database error"
-            });
+            return res.send("Database error");
         }
 
-        return res.json({
-            return res.redirect("/login");
-        });
+        // ✅ Redirect after successful registration
+        return res.redirect("/login");
     });
 });
+
 
 
 
