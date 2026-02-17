@@ -56,7 +56,7 @@ db.connect((err,res)=>{
 
 
 a.use(r.urlencoded({extended:true}));
-a.use(express.json());
+a.use(r.json());
 
  a.post("/form",(req,res)=>{
         console.log(req.body); 
