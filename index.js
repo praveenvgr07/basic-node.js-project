@@ -66,21 +66,19 @@ a.post("/form", (req, res) => {
 
     const sql = "SELECT * FROM node_js WHERE username = ? AND password = ?";
 
-    db.query(sql, [username, password], (err, result) => {
+    db.query(sql, [username, password], (err, result) => {   // ✅ result here
 
         if (err) {
             console.log(err);
             return res.send("Database error");
         }
 
-        // If no user found
         if (result.length === 0) {
             return res.send("Invalid username or password");
         }
 
-        // ✅ Login successful → Redirect to home page
-        return res.redirect("/home.html");
-
+        // ✅ Success
+        return res.redirect("/home");
     });
 
 });
