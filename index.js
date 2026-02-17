@@ -61,14 +61,26 @@ a.use(r.json());
  a.post("/form",(req,res)=>{
         console.log(req.body); 
         db.query("select *from node_js where username=? and password=?",[req.body.username,req.body.password],(err,res)=>{
-            if(res.length==0){console.log("data not found")};
-          console.log(res);
-          if (err) {
+
+        if (err) {
             console.log(err);
-            return res.status(500).json({ message: "Database error" });
+            return res.send("Database error");
         }
 
-       
+        if (result.length === 0) {
+            return res.send("User not found");
+        }
+
+        // Check password
+        if (result[0].password === password) {
+
+            // ✅ Redirect to home page
+            return res.redirect("/home.html");
+
+        } 
+        else {
+            return res.send("Incorrect password");
+        }
         res.forEach(e => {
                 console.log(e.username,"\t",e.password)
           });
