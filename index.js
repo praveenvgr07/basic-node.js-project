@@ -75,7 +75,7 @@ a.use(r.json());
         if (result[0].password === password) {
 
             // ✅ Redirect to home page
-            return res.redirect("/home.html");
+            return res.redirect("/home");
 
         } 
         else {
