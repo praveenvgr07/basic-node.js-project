@@ -58,35 +58,33 @@ db.connect((err,res)=>{
 a.use(r.urlencoded({extended:true}));
 a.use(r.json());
 
- a.post("/form",(req,res)=>{
-        console.log(req.body); 
-        db.query("select *from node_js where username=? and password=?",[req.body.username,req.body.password],(err,res)=>{
+a.post("/form", (req, res) => {
+
+    console.log(req.body);
+
+    const { username, password } = req.body;
+
+    const sql = "SELECT * FROM node_js WHERE username = ? AND password = ?";
+
+    db.query(sql, [username, password], (err, result) => {
 
         if (err) {
             console.log(err);
             return res.send("Database error");
         }
 
+        // If no user found
         if (result.length === 0) {
-            return res.send("User not found");
+            return res.send("Invalid username or password");
         }
 
-        // Check password
-        if (result[0].password === password) {
+        // ✅ Login successful → Redirect to home page
+        return res.redirect("/home.html");
 
-            // ✅ Redirect to home page
-            return res.redirect("/home");
+    });
 
-        } 
-        else {
-            return res.send("Incorrect password");
-        }
-        res.forEach(e => {
-                console.log(e.username,"\t",e.password)
-          });
-        })
+});
 
- }) ;
 
 a.post("/register", (req, res) => {
     console.log("Register route hit");
