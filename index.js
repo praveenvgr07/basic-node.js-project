@@ -104,7 +104,7 @@ a.post("/register", (req, res) => {
         }
 
         return res.json({
-            message: "Registration successful"
+            return res.redirect("/login");
         });
     });
 });
