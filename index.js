@@ -78,7 +78,7 @@ a.post("/form", (req, res) => {
         }
 
         // ✅ Success
-        return res.redirect("/home");
+        return res.redirect("home");
     });
 
 });
