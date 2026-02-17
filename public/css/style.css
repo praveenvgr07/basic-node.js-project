@@ -1,6 +1,6 @@
-/* ========================= */
-/* GLOBAL RESET */
-/* ========================= */
+/* ====================== */
+/* GLOBAL */
+/* ====================== */
 
 * {
     margin: 0;
@@ -12,22 +12,21 @@
 body {
     background-color: #ff5200;
     color: white;
-    position: relative;
-    min-height: 100vh;
-    overflow-x: hidden;
 }
 
-/* ========================= */
+/* ====================== */
 /* NAVIGATION */
-/* ========================= */
+/* ====================== */
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
-    flex-wrap: wrap;
+    padding: 20px 40px;
+    flex-wrap: nowrap; /* IMPORTANT */
 }
+
+/* Logo */
 
 .logo {
     display: flex;
@@ -40,110 +39,82 @@ nav {
 }
 
 .logo h1 {
-    font-size: 28px;
+    font-size: 26px;
 }
 
-nav div {
+/* Nav Links */
+
+.nav-links {
     display: flex;
     align-items: center;
     gap: 20px;
+    flex-wrap: nowrap; /* IMPORTANT */
 }
 
-nav div a {
+.nav-links a {
     text-decoration: none;
     color: white;
-    font-size: 18px;
     font-weight: bold;
+    font-size: 16px;
+    white-space: nowrap; /* Prevent break */
 }
 
 /* Buttons */
-
-.dark {
-    background-color: black;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.dark a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-.dark:hover {
-    background-color: white;
-}
-
-.dark:hover a {
-    color: #ff5200;
-}
 
 .light {
     background: transparent;
     border: 1px solid white;
     color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
-/* ========================= */
-/* HERO SECTION */
-/* ========================= */
+.dark {
+    background: black;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* ====================== */
+/* HERO */
+/* ====================== */
 
 .hero {
     text-align: center;
-    padding: 100px 20px;
-    position: relative;
-    z-index: 1;
+    padding: 80px 20px;
 }
 
 .hero h1 {
     font-size: 48px;
-    line-height: 1.3;
     margin-bottom: 30px;
+    line-height: 1.3;
 }
 
-.hero input {
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-box input {
+    padding: 14px;
     width: 350px;
     max-width: 90%;
-    padding: 14px;
     border: none;
     border-radius: 8px;
-    margin: 8px;
     font-size: 16px;
 }
 
-/* ========================= */
-/* SIDE IMAGES */
-/* ========================= */
-
-.left,
-.right {
-    position: absolute;
-    top: 200px;
-    z-index: 0;
-}
-
-.left {
-    left: 0;
-}
-
-.right {
-    right: 0;
-}
-
-.left img,
-.right img {
-    width: 220px;
-    max-width: 100%;
-}
-
-/* ========================= */
-/* CARDS SECTION */
-/* ========================= */
+/* ====================== */
+/* CARDS */
+/* ====================== */
 
 .cards {
     display: flex;
@@ -151,20 +122,18 @@ nav div a {
     gap: 30px;
     padding: 60px 20px;
     flex-wrap: wrap;
-    position: relative;
-    z-index: 1;
 }
 
 article {
-    background-color: white;
+    background: white;
     color: black;
-    width: 350px;
-    height: 380px;
+    width: 320px;
+    height: 350px;
     border-radius: 20px;
     padding: 30px;
     position: relative;
+    transition: 0.3s ease;
     cursor: pointer;
-    transition: transform 0.3s ease;
 }
 
 article:hover {
@@ -172,114 +141,96 @@ article:hover {
 }
 
 article h3 {
-    font-size: 26px;
+    font-size: 24px;
     margin-bottom: 8px;
 }
 
 article p {
-    font-size: 14px;
     color: gray;
     margin-bottom: 20px;
 }
 
-article span a {
+article span {
     color: #ff5200;
     font-weight: bold;
-    text-decoration: none;
     font-size: 18px;
 }
 
-figure img {
-    width: 140px;
+article img {
+    width: 130px;
     position: absolute;
     bottom: 20px;
     right: 20px;
 }
 
-.arrow button {
-    background: none;
-    border: none;
-    position: absolute;
-    bottom: 25px;
-    left: 30px;
-    cursor: pointer;
-}
-
-.arrow img {
-    width: 40px;
-}
-
-/* ========================= */
-/* TABLET VIEW */
-/* ========================= */
+/* ====================== */
+/* TABLET */
+/* ====================== */
 
 @media (max-width: 1024px) {
-
-    nav {
-        padding: 20px 30px;
-    }
 
     .hero h1 {
         font-size: 36px;
     }
 
-    .hero input {
-        width: 80%;
-    }
-
     article {
-        width: 300px;
-        height: 350px;
+        width: 280px;
+        height: 320px;
     }
 
-    .left img,
-    .right img {
-        width: 160px;
+    .logo h1 {
+        font-size: 22px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .light,
+    .dark {
+        padding: 6px 12px;
+        font-size: 13px;
     }
 }
 
-/* ========================= */
-/* MOBILE VIEW */
-/* ========================= */
+/* ====================== */
+/* MOBILE */
+/* ====================== */
 
 @media (max-width: 768px) {
 
     nav {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 15px;
+        padding: 15px 15px;
     }
 
-    .logo {
-        justify-content: center;
+    .logo h1 {
+        font-size: 18px;
     }
 
-    nav div {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        width: 100%;
+    .nav-links {
+        gap: 8px;
     }
 
-    nav div a {
-        font-size: 16px;
+    .nav-links a {
+        font-size: 12px;
     }
 
-    .dark,
-    .light {
-        width: 160px;
-    }
-
-    .hero {
-        padding: 70px 15px;
+    .light,
+    .dark {
+        padding: 5px 8px;
+        font-size: 11px;
     }
 
     .hero h1 {
-        font-size: 28px;
+        font-size: 24px;
     }
 
-    .hero input {
+    .search-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-box input {
         width: 100%;
     }
 
@@ -292,41 +243,5 @@ figure img {
         width: 95%;
         height: auto;
         padding-bottom: 80px;
-    }
-
-    figure img {
-        width: 110px;
-    }
-
-    .left,
-    .right {
-        position: relative;
-        top: 0;
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .left img,
-    .right img {
-        width: 120px;
-    }
-}
-
-/* ========================= */
-/* SMALL MOBILE */
-/* ========================= */
-
-@media (max-width: 480px) {
-
-    .hero h1 {
-        font-size: 22px;
-    }
-
-    article h3 {
-        font-size: 20px;
-    }
-
-    article span a {
-        font-size: 14px;
     }
 }
