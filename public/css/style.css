@@ -26,21 +26,7 @@ nav {
     flex-wrap: nowrap; /* IMPORTANT */
 }
 
-/* Logo */
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo img {
-    width: 40px;
-}
-
-.logo h1 {
-    font-size: 26px;
-}
 
 /* Nav Links */
 
